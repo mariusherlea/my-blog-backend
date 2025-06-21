@@ -454,7 +454,7 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    approved: Schema.Attribute.Boolean;
+    approved: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     article: Schema.Attribute.Relation<'manyToOne', 'api::article.article'>;
     authorName: Schema.Attribute.String & Schema.Attribute.Required;
     content: Schema.Attribute.String;
