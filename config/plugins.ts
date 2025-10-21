@@ -1,23 +1,16 @@
-export default ({ env }) => {
-  console.log('SMTP_USERNAME:', env('SMTP_USERNAME'));
-  return {
-    email: {
-      config: {
-        provider: 'nodemailer',
-        providerOptions: {
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true,
-          auth: {
-            user: env('SMTP_USERNAME'),
-            pass: env('SMTP_PASSWORD'),
-          },
-        },
-        settings: {
-          defaultFrom: env('SMTP_USERNAME'),
-          defaultReplyTo: env('SMTP_USERNAME'),
-        },
+//config/plugins.ts
+export default ({ env }) => ({
+  email: {
+    config: {
+      provider: 'resend',
+      providerOptions: {
+        apiKey: env('RESEND_API_KEY'),
+      },
+      settings: {
+        defaultFrom: env('EMAIL_FROM', 'no-reply@resend.dev'),
+        defaultReplyTo: env('EMAIL_FROM', 'no-reply@resend.dev'),
       },
     },
-  };
-};
+  },
+});
+
