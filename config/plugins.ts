@@ -2,7 +2,7 @@
 export default ({ env }) => ({
   email: {
     config: {
-      provider: 'resend',
+      provider: './src/providers/email-resend', // <-- path local
       providerOptions: {
         apiKey: env('RESEND_API_KEY'),
       },
@@ -13,4 +13,3 @@ export default ({ env }) => ({
     },
   },
 });
-
