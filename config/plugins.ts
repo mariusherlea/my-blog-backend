@@ -4,7 +4,7 @@ import path from "path";
 export default ({ env }) => ({
   email: {
     config: {
-      provider: path.join(process.cwd(), "dist/src/providers/email-resend"), // ✅ cale corectă în producție
+      provider: path.join(process.cwd(), "dist/src/providers/email-resend"),
       providerOptions: {
         apiKey: env("RESEND_API_KEY"),
       },
