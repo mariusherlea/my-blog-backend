@@ -41,6 +41,7 @@
 //   },
 // };
 
+
 export default {
   async afterCreate(event: any) {
     await sendEmailsToSubscribers(event);
@@ -65,14 +66,14 @@ async function sendEmailsToSubscribers(event: any) {
     for (const subscriber of subscribers) {
       await strapi.plugins['email'].services.email.send({
         to: subscriber.email,
-        from: 'mariusherlea@gmail.com',
+        from: 'no-reply@resend.dev', // 👈 același ca în plugins.ts
         subject: `🆕 Articol nou: ${result.title}`,
         text: `Salut!\n\nA fost publicat un nou articol pe blog: "${result.title}".\n\nVizitează blogul pentru a-l citi.`,
       });
     }
 
-    strapi.log.info(`Emailuri trimise către ${subscribers.length} abonați.`);
+    strapi.log.info(`✅ Emailuri trimise către ${subscribers.length} abonați.`);
   } catch (error) {
-    strapi.log.error('Eroare la trimiterea emailurilor către abonați:', error);
+    strapi.log.error('❌ Eroare la trimiterea emailurilor către abonați:', error);
   }
 }
