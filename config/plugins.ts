@@ -10,7 +10,10 @@ export default ({ env }: { env: (key: string) => string }) => ({
         cloud_name: env('CLOUDINARY_NAME'),
         api_key: env('CLOUDINARY_KEY'),
         api_secret: env('CLOUDINARY_SECRET'),
+        secure:true,
       },
+      breakpoints:{},
+      responsiveDimensions: false,  
       actionOptions: {
         upload: {},
         delete: {},
