@@ -42,12 +42,13 @@
 //     },
 //   },
 // });
-export default () => ({
+export default ({ env }) => ({
   connection: {
-    client: 'sqlite',
+    client: "postgres",
     connection: {
-      filename: '.tmp/data.db',
+      connectionString: env("DATABASE_URL"),
+      ssl: env.bool("DATABASE_SSL", true),
     },
-    useNullAsDefault: true,
   },
 });
+
