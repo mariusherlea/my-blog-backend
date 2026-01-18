@@ -5,4 +5,5 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
+  encryptionKey: env("STRAPI_ENCRYPTION_KEY"),
 });
